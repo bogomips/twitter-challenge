@@ -11,7 +11,7 @@
 - Clone this repository
 - Enter the project folder
 - Edit twFetcher/src/config.ts and set your twitter api keys
-- Launch docker-compose
+- Launch docker-compose (as root)
 - Open a browser and digit http://localhost:8080 
 
 Command recap
@@ -19,7 +19,7 @@ Command recap
 git clone https://github.com/bogomips/twitter-challenge
 cd twitter-challenge
 gedit twFetcher/src/config.ts
-docker-compose up
+sudo docker-compose up
 ```
 ## Design
 
