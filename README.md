@@ -83,7 +83,7 @@ The api requests are performed through the "apis" provider.
 The "highlight" directive highlights the searched phrase, while the "links-render" converts links and twitter ids to a nicely displayed hyper text.
 
 
-### Other approaches           
+## Other approaches           
 In a first design I was using rabbitMq to send messages from twFetcher to another app that was processing and storing tweets in the dbs.
 Also, I found many alternative approaches to synchronize the two dbs.
 Many of these projects are developed during the spare time or dismissed or they would have added other levels of complexity.
@@ -91,17 +91,17 @@ I also evaluated logstash that can automatically fetch and index tweets in elast
 The approach I've finally chosen does not introduce a performance issue because the tweets are written just on two master node databases.
 If scaling is needed, databases will be replicated.
 
-### Scaling strategies
+## Scaling strategies
 Mongodb and Elasticsearch can be easily replicated for high availability and read performance purposes.
 While the elasticsearch db will always contain the last 100 tweets, mongodb (if capped is set to false) can grow.
 In this case sharding is a good option.
 The userApi can easily be deployed to many servers. Dns round robin or a more sophisticated load balancer can be used to distribute the requests amongst the servers.
 
-### Possible change in the requirements
+## Possible change in the requirements
 Several details are easily controllable through config.ts files.
 The whole codebase is written in typescript wich is suitable for large projects.
 All the projects are structured to be easily expanded and modified.
 
-### Todo
+## Todo
 All the projects have support for unit tests. 
 Unit tests and e2e tests have to be written in order to avoid regression bugs.
