@@ -82,11 +82,12 @@ The "highlight" directive highlights the searched phrase, while the "links-rende
 
 
 ### Other approaches           
-In a first design I was using rabbitMq to send messages from twFetcher to another app that was processing and store tweets in the dbs.
+In a first design I was using rabbitMq to send messages from twFetcher to another app that was processing and storing tweets in the dbs.
 Also, I found many alternative approaches to synchronize the two dbs.
 Many of these projects are developed during the spare time or dismissed or they would have added other levels of complexity.
 I also evaluated logstash that can automatically fetch and index tweets in elasticsearch, but it is not suitable for keeping the dbs aligned, plus in this way, I would have lost the control of the whole operation.
-The approach I've finally chosen does not introduce a performance issue because the tweets are written just on the master node, in case of scaling, it is possible to replicate it.
+The approach I've finally chosen does not introduce a performance issue because the tweets are written just on two master node databases.
+If scaling is needed, databases will be replicated.
 
 ### Scaling strategies
 Mongodb and Elasticsearch can be easily replicated for high availability and read performance purposes.
