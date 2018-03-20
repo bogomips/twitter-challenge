@@ -4,19 +4,13 @@
 
 ### Requirements
 - docker and docker-compose installed and working
-- [create a twitter app](https://apps.twitter.com/) and set your keys in twFetcher/src/config.ts
+- [create a twitter app](https://apps.twitter.com/)
 
-```json
-  twitter: {
-    credentials: {
-      apiKey:null,
-      apiSecret:null
-    }
-```
 
 ### Steps
 - Clone this repository
 - Enter the project folder
+- Edit twFetcher/src/config.ts and set your twitter api keys
 - Launch docker-compose
 - Open a browser and digit http://localhost:8080 
 
@@ -24,6 +18,7 @@ Command recap
 ```bash
 git clone https://github.com/bogomips/twitter-challenge
 cd twitter-challenge
+gedit twFetcher/src/config.ts
 docker-compose up
 ```
 ## Design
