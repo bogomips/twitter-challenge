@@ -10,7 +10,9 @@
 ### Steps
 - Clone this repository
 - Enter the project folder
-- Edit twFetcher/src/config.ts and set your twitter api keys
+- Edit twFetcher/src/config.ts 
+  - set your twitter api keys
+  - customize 'twitter.search.query' value, default is '#blockchain'
 - Launch docker-compose (as root)
 - Open a browser and digit http://localhost:8080 
 
