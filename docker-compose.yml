@@ -1,0 +1,88 @@
+version: "2"
+services:  
+
+  elasticsearch:
+    container_name: elasticsearch
+    image: elasticsearch:alpine
+    environment:
+      - bootstrap.memory_lock=true
+      - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
+    #volumes:      
+    #  - ${PWD}/esdata:/usr/share/elasticsearch/data elasticsearch
+    expose:
+      - "9200"
+      - "9300"
+    #uncomment to access the api
+    #ports:
+    #  - "9200:9200"
+    #  - "9300:9300"
+
+  mongoStorage:
+    container_name: mongoStorage
+    image: mongo:3.6-jessie
+    #volumes:
+    #  - ${PWD}/mongoData:/data/db
+    expose:
+      - "27017"
+    #uncomment to access the mongoshell
+    #ports:
+    #  - "27017:27017"  
+
+  twFetcher:
+    build: 
+      context: ./twFetcher
+    container_name: twFetcher
+    depends_on:        
+      - elasticsearch
+      - mongoStorage   
+    
+    image: "twfetcherimg"
+    #user: "node"
+    working_dir: /home/node/app
+    #environment:
+    #  - NODE_ENV=production
+    #volumes:
+    #  - ${PWD}/twFetcher:/home/node/app
+    #expose:
+    #  - "8081"
+    #command: "npm run dev"
+
+  userApi:
+    build: 
+      context: ./userApi
+    container_name: userApi      
+    depends_on:        
+      - elasticsearch
+      - mongoStorage          
+    image: "userapiimg"
+    #user: "node"
+    working_dir: /home/node/app
+    #environment:
+    #  - NODE_ENV=production
+    #volumes:
+    #  - ${PWD}/userApi:/home/node/app
+    expose:
+      - "8081"
+    ports:
+      - "8081:8081"  
+    #command: "npm run dev"
+
+  nginxServer:
+    build: 
+      context: ./frontend
+    container_name: nginxServer    
+    depends_on:        
+      - userApi      
+    image: "nginxserver"    
+    #volumes:
+    #  - ${PWD}/frontend/www:/usr/share/nginx/html
+    expose:
+      - "80"
+    ports:
+      - "8080:80"  
+
+  

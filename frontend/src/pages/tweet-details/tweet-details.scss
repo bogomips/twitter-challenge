@@ -1,0 +1,16 @@
+page-tweet-details {
+
+  .main-content {
+    height: 100%;
+  }
+  .description {
+    font-size:1rem;
+  }
+  .nickname {
+    color:color($colors, twitter) !important;    
+  }
+
+  ion-item {
+    cursor:pointer;
+  }
+}

@@ -1,0 +1,44 @@
+<ion-header>
+  <!--<ion-navbar>
+    <ion-title>
+      Tweets searcher
+    </ion-title>
+  </ion-navbar>  -->
+
+  <ion-toolbar>
+    <ion-searchbar 
+      [(ngModel)]="searchbarModel" 
+      autocomplete="false"
+      animated="true"
+      placeholder="what do you wanna search?"
+      (ionInput)="searchTweets()">
+    </ion-searchbar>
+  </ion-toolbar>
+
+</ion-header>
+
+<ion-content padding>
+
+  <div class="no-content-wrapper" *ngIf="!tweets.length">     
+    <div class="no-content-content">
+      <span *ngIf="loading">
+        <ion-spinner color="primary" item-center></ion-spinner>          
+      </span>
+      <span *ngIf="!loading">
+        <ion-icon color="twitter" name="logo-twitter"></ion-icon>
+        <p> No a tweet matches your query </p>
+      </span>
+    </div>
+  </div>
+  
+  <ion-card  *ngFor="let tweet of tweets">
+
+    <ion-card-header class="tweet-header">{{tweet._source.created_at}}</ion-card-header>
+  
+    <ion-card-content highlight [search]="searchbarModel" link-render>
+      {{tweet._source.text}}      
+    </ion-card-content>
+    <button float-right outline ion-button (click)="getDetails(tweet._source.id)">Details</button>
+  </ion-card>
+
+</ion-content>

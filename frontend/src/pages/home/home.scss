@@ -1,0 +1,15 @@
+page-home {
+
+  .highlight {
+    color: color($colors,primary);
+  }
+
+  .tweet-header {
+    color: color($colors, twitter);
+    //text-decoration: underline;
+  }
+
+  .nickname {
+    color:color($colors, twitter) !important;    
+  }
+}

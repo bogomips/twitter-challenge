@@ -1,0 +1,67 @@
+
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Tweet details</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content>
+
+  <div class="no-content-wrapper" *ngIf="!tweet">     
+      <div class="no-content-content">
+        <span *ngIf="loading">
+          <ion-spinner color="primary" item-center></ion-spinner>          
+        </span>
+        <span *ngIf="!loading">
+          <ion-icon color="twitter" name="logo-twitter"></ion-icon>
+          <p> This post id does not exist </p>
+        </span>
+      </div>
+    </div>
+
+  <div class="main-content" *ngIf="tweet" padding [ngStyle]="{'background-color':'#'+tweet.user.profile_background_color}">
+
+    <ion-card>
+
+      <ion-item (click)="goToProfile()">
+        <ion-avatar item-start>
+          <img [src]="tweet.user.profile_image_url">
+        </ion-avatar>
+        <h2>{{tweet.user.name}}</h2>
+        <p>{{tweet.user.created_at}}</p>
+      </ion-item>
+    
+
+      <img *ngIf="tweet.user.profile_banner_url" src="{{tweet.user.profile_banner_url}}/1500x500">
+    
+      <ion-card-content>
+        <p class="description">{{tweet.user.description}}</p>
+        <hr>
+        <p link-render [ngStyle]="{'color':'#'+tweet.user.profile_text_color}">{{tweet.text}}</p>
+      </ion-card-content>
+    
+      <ion-row>
+        <ion-col>
+          <button ion-button icon-left clear small>
+            <ion-icon name="logo-twitter"></ion-icon>
+            <div>{{tweet.retweet_count}} Retweets</div>
+          </button>
+        </ion-col>
+        <ion-col>
+          <button ion-button icon-left clear small>
+            <ion-icon name="heart"></ion-icon>
+            <div>{{tweet.favorite_count}} Likes</div>
+          </button>
+        </ion-col>
+        <ion-col center text-center>
+          <!--<ion-note>            
+          </ion-note>-->
+        </ion-col>
+      </ion-row>
+      
+      </ion-card>
+   </div>
+</ion-content>

@@ -1,0 +1,35 @@
+{
+  "name": "twfetcher",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nodemon --watch 'src/**/*' -e ts,tsx --exec 'ts-node' ./src/index.ts",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "amqplib": "^0.5.2",
+    "app-module-path": "^2.2.0",
+    "date-fns": "^1.29.0",
+    "elasticsearch": "^14.2.1",
+    "install": "^0.10.4",
+    "lodash": "^4.17.5",
+    "mongodb": "^3.0.4",
+    "npm": "^5.7.1",
+    "request": "^2.85.0",
+    "request-promise-native": "^1.0.5",
+    "rxjs": "^5.5.7",
+    "twitter": "^1.7.1",
+    "twitter-lite": "^0.4.0"
+  },
+  "devDependencies": {
+    "nodemon": "^1.17.2",
+    "ts-node": "^5.0.1",
+    "typescript": "^2.7.2",
+    "chai": "^4.1.2",
+    "chai-http": "^3.0.0",
+    "mocha": "^5.0.4"
+  }
+}
