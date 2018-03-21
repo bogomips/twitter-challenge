@@ -24,7 +24,7 @@ gedit twFetcher/src/config.ts
 sudo docker-compose up
 ```
 
-**only if your are not deployng on localhost**
+**only if your are not deploying on localhost**
 
  Edit frontend/src/providers/apis/apis.ts and set this.apis variable with your api ip
 
