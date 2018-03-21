@@ -23,6 +23,18 @@ cd twitter-challenge
 gedit twFetcher/src/config.ts
 sudo docker-compose up
 ```
+
+**only if your are not deployng on localhost**
+ Edit frontend/src/providers/apis/apis.ts and set this.apis variable with your api ip.
+ ```this.api_base = `http://your-api-ip:${port}/v1/`;```
+
+ ```sh
+ cd frontend 
+ ionic build --prod
+ ```
+ 
+ 
+
 ## Design
 
 ### Software stack
